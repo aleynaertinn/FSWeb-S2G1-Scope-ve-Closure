@@ -30,10 +30,14 @@ console.log('örnek görev:', ilkiniDon(['as','sa'],function(metin){return metin
   Aşağıdaki skor1 ve skor2 kodlarını inceleyiniz ve aşağıdaki soruları altına not alarak cevaplayın
   
   1. skor1 ve skor2 arasındaki fark nedir?
+  skor1 ile farklı farklı sayaçlar üretiriz ama skor2 ile bu sadece bir taneye özgü
   
   2. Hangisi bir closure kullanmaktadır? Nasıl tarif edebilirsin? (yarınki derste öğreneceksin :) )
+  closure metodunu kullanan skor1 dir
   
   3. Hangi durumda skor1 tercih edilebilir? Hangi durumda skor2 daha mantıklıdır?
+    skor1 i bir çok opsiyomda kullanabilir değştirip istediğimiz yerde kullanmak gibi farklı farklı sayçlar atar bize ama bu durumu skor2 de 
+    kullanamayız çünki bu bi defalık bir şey olur.
 */
 
 // skor1 kodları
@@ -45,6 +49,18 @@ function skorArtirici() {
 }
 
 const skor1 = skorArtirici();
+console.log("skor1 :",skor1())
+console.log("skor1 :",skor1())
+console.log("skor1 :",skor1())
+console.log("skor1 :",skor1())
+console.log("skor1 :",skor1())
+
+const skor3 = skorArtirici();
+
+console.log("skor3 :",skor3())
+console.log("skor3 :",skor3())
+console.log("skor3 :",skor3())
+console.log("skor3 :",skor3())
 
 // skor2 kodları
 let skor = 0;
@@ -52,6 +68,16 @@ let skor = 0;
 function skor2() {
   return skor++;
 }
+
+console.log("skor2: ", skor2())
+console.log("skor2: ", skor2())
+console.log("skor2: ", skor2())
+console.log("skor2: ", skor2())
+
+const skor4 = skor2();
+
+
+
 
 
 /* Görev 2: takimSkoru() 
@@ -64,9 +90,10 @@ Aşağıdaki takimSkoru() fonksiyonununda aşağıdakileri yapınız:
 Not: Bu fonskiyon, aşağıdaki diğer görevler için de bir callback fonksiyonu olarak da kullanılacak
 */
 
-function takimSkoru(/*Kodunuzu buraya yazınız*/){
-    /*Kodunuzu buraya yazınız*/
+function takimSkoru(){
+    return Math.floor(Math.random()*(25-10+1))+10
 }
+console.log("Göre2 :",takimSkoru())
 
 
 
@@ -86,10 +113,31 @@ Aşağıdaki macSonucu() fonksiyonununda aşağıdakileri yapınız:
 }
 */ 
 
-function macSonucu(/*Kodunuzu buraya yazınız*/){
-  /*Kodunuzu buraya yazınız*/
+function macSonucu(skor,sayı){
+  const skor2 = skor 
+  function evSahibi(skor2){
+    let toplam = 0;
+    for(let i =1; i < sayı;i++){
+      toplam = toplam + skor2;
+    }
+    return toplam;
+  }
+  const skor3 = skor
+  function konukT(skor3){
+    let toplam2 = 0;
+    for(let i =1; i < sayı;i++){
+      toplam2 = toplam2 +  skor3;
+    }
+    return toplam2;
+  }
+  let sonuc = {};
+  sonuc.EvSahibi = evSahibi();
+  sonuc.KonukTakim = konukT();
+  console.log("a",sayı);
+  return sonuc;
 }
 
+console.log("Görev3 : ",macSonucu(takimSkoru(),4))
 
 
 
@@ -109,10 +157,16 @@ Aşağıdaki periyotSkoru() fonksiyonununda aşağıdakileri yapınız:
   */
 
 
-function periyotSkoru(/*Kodunuzu buraya yazınız*/) {
-  /*Kodunuzu buraya yazınız*/
+
+function periyotSkoru(skor) {
+
+
+ 
 
 }
+console.log("Görev4: ",periyotSkoru(takimSkoru()))
+
+
 
 
 /* Zorlayıcı Görev 5: skorTabelasi() 
